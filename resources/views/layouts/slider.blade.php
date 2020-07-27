@@ -75,7 +75,7 @@
                       data-responsive_offset="on" 
                       style="z-index: 7; white-space: nowrap;">Available On {{config('app.name')}} </div>
     </li>
-    <li data-index="rs-181" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="images/it_service/slide2.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Easy To Use & Customize" data-description="">
+    <li data-index="rs-181" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="images/it_service/slide2.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Fast &amp; Affordable" data-description="">
       <!-- MAIN IMAGE -->
       <img src="images/it_service/slide2.jpg"  alt=""  data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
       <!-- LAYERS -->
@@ -151,7 +151,7 @@
                       data-responsive_offset="on" 
                       style="z-index: 7; white-space: nowrap;">Available On {{config('app.name')}} </div>
     </li>
-    <li data-index="rs-18" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="images/it_service/slide3.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Perfectly Responsive" data-description="">
+    <li data-index="rs-18" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="images/it_service/slide3.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="We will FIx it For You" data-description="">
       <!-- MAIN IMAGE -->
       <img src="images/it_service/slide3.jpg"  alt=""  data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
       <!-- LAYERS -->
@@ -207,7 +207,7 @@
                       data-splitout="none" 
                       data-responsive_offset="on" 
                       data-elementdelay="0.05" 
-                      style="z-index: 6; white-space: nowrap;">We Will Fix Everything </div>
+                      style="z-index: 6; white-space: nowrap;">We Will Fix It For You </div>
       <!-- LAYER NR. 3 -->
       <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0" 
                       id="slide-18-layer-4" 
