@@ -20,3 +20,29 @@ Route::get('/Services',[
     'uses'=>'IndexController@index',
     'as'=>'services'
 ]);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/User/Roles',[
+        'uses'=>'UsersController@roles',
+        'as'=>'roles'
+    ]);
+    Route::post('/User/Roles/Post',[
+        'uses'=>'UsersController@rSave',
+        'as'=>'roles.post'
+    ]);
+    Route::get('/User/Roles/Delete/{id}',[
+        'uses'=>'UsersController@rdelete',
+        'as'=>'role.delete'
+    ]);
+    Route::get('/User/Add',[
+        'uses'=>'UsersController@create',
+        'as'=>'users.add'
+    ]);
+    Route::resource('users', 'UsersController');
+});
