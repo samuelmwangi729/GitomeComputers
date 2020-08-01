@@ -15,7 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('Users.Index')->with('users',User::all());
+        $users=User::paginate(10);
+        return view('Users.Index')->with('users',$users);
     }
 
     /**
@@ -49,7 +50,7 @@ class UsersController extends Controller
            'role'=>$request->role,
            'password'=>bcrypt($request->password),
        ]);
-       Session::flash('success','User Successfully Added');
+       Session::flash('danger','User Successfully Added');
        return back();
     }
 
@@ -72,7 +73,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::find($id);
+        return view('Users.Edit')
+        ->with('roles',Level::all())
+        ->with('user',$user);
     }
 
     /**
@@ -84,7 +88,21 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules=[
+            'name'=>'required',
+            'email'=>'email|required',
+            'role'=>'required'
+        ];
+        //validate everything 
+        $this->validate($request,$rules);
+        $user=User::find($id);
+        if($user){
+            $user->name=$request->name;
+            $user->role=$request->role;
+            $user->save();
+            Session::flash('success','User Successfully Updated');
+            return back();
+        }
     }
 
     /**
@@ -95,7 +113,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user=User::find($id);
+        if($user){
+            $user->delete();
+            Session::flash('danger','User Successfully Deleted');
+            return back();
+        }
     }
     protected function roles(){
         return view('Users.Roles')->with('roles',Level::all());

@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Contact;
-use App\Quote;
-use Session;
-use Illuminate\Http\Request;
 
-class IndexController extends Controller
+use Illuminate\Http\Request;
+use App\Service;
+use Session;
+class ServicesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('Services');
+        return view('Services.Index')
+        ->with('services',Service::all());
     }
 
     /**
@@ -23,10 +23,9 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function contact()
+    public function create()
     {
-        $contacts=Contact::all();
-        return view('contact')->with('contacts',$contacts);
+        //
     }
 
     /**
@@ -37,22 +36,14 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        $rules=[
-            'name'=>'required',
-            'email'=>'required|email',
-            'phone'=>'required',
-            'message'=>'required'
+        $rule=[
+            'Service'=>'required|unique:services'
         ];
-        $this->validate($request,$rules);
-        //then save to the database
-        $data=[
-            'Names'=>$request->name,
-            'Email'=>$request->email,
-            'Phone'=>$request->phone,
-            'Message'=>$request->message,
-        ];
-        $quote=Quote::create($data);
-        Session::flash('success','Quote Successfully received. We will get Back to you via the Phone '. $data['Phone']. ' Or by the email '. $data['Email']);
+        $this->validate($request,$rule);
+        Service::create([
+            'Service'=>$request->Service
+        ]);
+        Session::flash('success','Service Successfully Added');
         return back();
     }
 
@@ -75,7 +66,8 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service=Service::find($id);
+        return view('Services.Edit')->with('service',$service);
     }
 
     /**
@@ -87,7 +79,19 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rule=[
+            'Service'=>'required'
+        ];
+        $this->validate($request,$rule);
+        $service=Service::find($id);
+        if($service){
+            //update the details
+            $service->Service=$request->Service;
+            $service->save();
+            Session::flash('success','Service Successfully Updated');
+            return redirect(route('services.index'))
+            ->with('services',Service::all());
+        }
     }
 
     /**
@@ -98,6 +102,13 @@ class IndexController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service=Service::find($id);
+        if($service){
+            $service->delete();
+            Session::flash('danger','Service successfully Removed');
+            return back();
+        }
+        Session::flash('danger','Service Not Available, Already Deleted');
+        return back();
     }
 }

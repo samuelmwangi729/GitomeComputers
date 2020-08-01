@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="Samuel Mwangi ">
 <!-- site icons -->
-<link rel="icon" href="images/fevicon/fevicon.png" type="image/gif" />
+<link rel="icon" href="{{ asset('images/fevicon/fevicon.png') }}" type="image/gif" />
 <!-- bootstrap css -->
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 <!-- Site css -->
@@ -30,6 +30,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/settings.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/layers.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/navigation.css') }}" />
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -37,7 +38,7 @@
 </head>
 <body id="default_theme" class="it_service">
 <!-- loader -->
-<div class="bg_load"> <img class="loader_animation" src="images/loaders/loader_1.png" alt="#" /> </div>
+<div class="bg_load"> <img class="loader_animation" src="{{ asset('images/loaders/loader_1.png') }}" alt="#" /> </div>
 <!-- end loader -->
 @include('layouts.header')
 @yield('content')
@@ -48,12 +49,12 @@
       <div class="col-md-12">
         <div class="full">
           <div class="contact_us_section">
-            <div class="call_icon"> <img src="images/it_service/phone_icon.png" alt="#" /> </div>
+            <div class="call_icon"> <img src="{{ asset('images/it_service/phone_icon.png"') }}" alt="#" /> </div>
             <div class="inner_cont">
               <h2>REQUEST A FREE QUOTE</h2>
               <p>Get answers and advice from people you want it from.</p>
             </div>
-            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="it_contact.html">Contact us</a> </div>
+            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="{{ route('contact') }}">Contact us</a> </div>
           </div>
         </div>
       </div>
@@ -184,7 +185,7 @@
 <!-- wow animation -->
 <script src="{{ asset('js/wow.js') }}"></script>
 <!-- custom js -->
-<script src="js/custom.js"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
 <!-- revolution js files -->
 <script src="{{ asset('revolution/js/jquery.themepunch.tools.min.js') }}"></script>
 <script src="{{ asset('revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
@@ -197,5 +198,13 @@
 <script src="{{ asset('revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+  $('#summernote').summernote(
+    {
+      height:250
+    }
+  )
+  </script>
 </body>
 </html>

@@ -22,12 +22,24 @@
                     <!--Start Messages-->
                     <li><a><i class="fa fa-envelope"></i> Messages <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="form.html">Compose Message</a></li>
-                          <li><a href="form_advanced.html">View Sent Messages</a></li>
-                          <li><a href="form_validation.html">Manage Messages</a></li>
+                          <li><a href="{{ route('messages.index') }}">Received Message</a></li>
                         </ul>
                       </li>
                     <!--End Messages-->
+                    <!--Start Services-->
+                    <li><a><i class="fa fa-wrench"></i> Services <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><a href="{{ route('services.index') }}">Add Service</a></li>
+                      </ul>
+                    </li>
+                    {{-- End Services --}}
+                    <!--Start COntact-->
+                    <li><a><i class="fa fa-map-marker"></i> Contacts <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><a href="{{ route('contacts.index') }}">Add Service</a></li>
+                      </ul>
+                    </li>
+                    <!--end COntact-->
                     <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
                         <li><a href="form.html">General Form</a></li>

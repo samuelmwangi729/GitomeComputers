@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Contact;
-use App\Quote;
-use Session;
-use Illuminate\Http\Request;
 
-class IndexController extends Controller
+use Illuminate\Http\Request;
+use App\Contact;
+use Session;
+class ContactsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('Services');
+        return view('Contacts.Index')->with('contacts',Contact::all());
     }
 
     /**
@@ -23,10 +22,9 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function contact()
+    public function create()
     {
-        $contacts=Contact::all();
-        return view('contact')->with('contacts',$contacts);
+        //
     }
 
     /**
@@ -38,21 +36,17 @@ class IndexController extends Controller
     public function store(Request $request)
     {
         $rules=[
-            'name'=>'required',
-            'email'=>'required|email',
-            'phone'=>'required',
-            'message'=>'required'
+            'Type'=>'required',
+            'Address'=>'required'
         ];
         $this->validate($request,$rules);
-        //then save to the database
+        //if the data is valid, insert then into the database 
         $data=[
-            'Names'=>$request->name,
-            'Email'=>$request->email,
-            'Phone'=>$request->phone,
-            'Message'=>$request->message,
+            'Type'=>$request->Type,
+            'Address'=>$request->Address,
         ];
-        $quote=Quote::create($data);
-        Session::flash('success','Quote Successfully received. We will get Back to you via the Phone '. $data['Phone']. ' Or by the email '. $data['Email']);
+        Contact::create($data);
+        Session::flash('success','Contacts Successfully Recorded');
         return back();
     }
 
@@ -75,7 +69,14 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact=Contact::find($id);
+        if($contact){
+            return view('Contacts.Edit')->with('contact',$contact);
+        }
+        else{
+            Session::flash('danger','Unavailable');
+            return back();
+        }
     }
 
     /**
@@ -87,7 +88,23 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules=[
+            'Type'=>'required',
+            'Address'=>'required'
+        ];
+        $this->validate($request,$rules);
+        //then create the array
+        $data=[
+            'Type'=>$request->Type,
+            'Address'=>$request->Address
+        ];
+        //update now
+        $contact=Contact::find($id);
+        $contact->Type=$request->Type;
+        $contact->Address=$request->Address;
+        $contact->save();
+        Session::flash('success','Successfully Saved');
+        return redirect()->route('contacts.index');
     }
 
     /**
@@ -98,6 +115,11 @@ class IndexController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact=Contact::find($id);
+        if($contact){
+            $contact->delete();
+            Session::flash('danger','Contact Successfully Deleted');
+            return back();
+        }
     }
 }

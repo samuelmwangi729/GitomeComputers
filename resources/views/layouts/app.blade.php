@@ -16,6 +16,7 @@
     <link href="{{ asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="{{ asset('vendors/css/custom.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -166,9 +167,15 @@
     <!-- Bootstrap -->
     <script src="{{ asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- FastClick -->
-    
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('vendors/js/custom.min.js') }}"></script>
-	
+    <script>
+    $('#summernote').summernote(
+      {
+        height:250
+      }
+    )
+    </script>
   </body>
 </html>

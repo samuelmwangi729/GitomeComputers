@@ -20,6 +20,14 @@ Route::get('/Services',[
     'uses'=>'IndexController@index',
     'as'=>'services'
 ]);
+Route::get('/Contact/Us',[
+    'uses'=>'IndexController@contact',
+    'as'=>'contact'
+]);
+Route::post('/Quote/Request',[
+    'uses'=>'IndexController@store',
+    'as'=>'quotes'
+]);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -45,4 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
         'as'=>'users.add'
     ]);
     Route::resource('users', 'UsersController');
+    Route::resource('messages','MessagesController');
+    Route::resource('services', 'ServicesController');
+    Route::resource('contacts', 'ContactsController');
 });

@@ -8,8 +8,15 @@
             <div class="full">
               <div class="topbar-left">
                 <ul class="list-inline">
-                  <li> <span class="topbar-label"></span> <span class="topbar-hightlight"><i class="fa fa-map-marker"></i>&nbsp;Goshen HSE, 1<sup>st</sup> Floor Rm 2,<br></span> </li>
-                  <li> <span class="topbar-label"><i class="fa fa-envelope-o"></i></span> <span class="topbar-hightlight"><a href="mailto:ggtomeh@gmail.com">ggtomeh@gmail.com</a></span> </li>
+                  @foreach (App\Contact::all() as $contact )
+                      @if( $contact->Type=='Building')
+                      <li> <span class="topbar-label"></span> <span class="topbar-hightlight"><i class="fa fa-map-marker"></i>{{ $contact->Address }}</span> </li>
+                      @elseif( $contact->Type=='Mobile')
+                      <li> <span class="topbar-label"><i class="fa fa-phone"></i></span> <span class="topbar-hightlight"><a href="mailto:ggtomeh@gmail.com">{{ $contact->Address }}</a></span> </li>
+                      @else
+                      <li> <span class="topbar-label"><i class="fa fa-envelope-o"></i></span> <span class="topbar-hightlight"><a href="mailto:ggtomeh@gmail.com">{{ $contact->Address }}</a></span> </li>
+                      @endif
+                  @endforeach
                 </ul>
               </div>
             </div>
@@ -57,7 +64,7 @@
                   <li><a href="it_about.html">About Us</a></li>
                   <li> <a href="{{ route('services') }}">Service</a>
                   </li>
-                  <li><a href="it_about.html">Contact</a></li>
+                  <li><a href="{{ route('contact') }}">Contact</a></li>
                 </ul>
               </div>
             </div>
