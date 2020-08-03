@@ -2,6 +2,18 @@
 @section('content')
 <div class="row">
     <div class="col">
+        @if(Session::has('success'))
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ Session::get('success') }}
+        </div>
+        @endif
+        @if(Session::has('danger'))
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ Session::get('danger') }}
+        </div>
+        @endif
         <div class="x_panel">
             <div class="x_title">
                 <h5 class="text-center">Available Products in {{ config('app.name') }} Store</h5>
@@ -42,7 +54,7 @@
                             <td>
                                 <a href="{{ route('products.edit',[$product->id]) }}" class="fa fa-edit" style="color:blue"></a>&nbsp;
                                 <a href="{{ route('products.show',[$product->id]) }}" class="fa fa-eye" style="color:green"></a>
-                                <button class="btn btn-sm fa fa-trash" style="color:red;background-color:#f9f9f9 !important"></button>
+                                <a href="{{ route('product.destroy',[$product->id]) }}" class="fa fa-trash" style="color:red"></a>
                             </td>
                         </tr>
                         @endforeach

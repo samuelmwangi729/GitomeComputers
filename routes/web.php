@@ -60,4 +60,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('categories', 'CategoriesController');
     Route::resource('products', 'ProductsController');
     Route::resource('brands', 'BrandsController');
+    Route::get('Product/Delete/{id}',[
+        'uses'=>'ProductsController@destroy',
+        'as'=>'product.destroy'
+    ]);
 });

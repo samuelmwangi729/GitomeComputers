@@ -123,7 +123,51 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules=[
+            'ProductName'=>'required',
+            'ProductText'=>'required',
+            'ProductCategory'=>'required',
+            'ProductBrand'=>'required',
+            'SellingPrice'=>'required',
+            'ProductDescription'=>'required',
+            'ProductCount'=>'required',
+        ]; 
+        $this->validate($request,$rules);
+        $product=Product::find($id);
+        if($request->file('ProductImage')){
+            //then i will have to update the previus file and delete it 
+            $previousFile=$product->ProductImage;
+            @unlink($previousFile);//delete the file 
+            $pimage=$request->file('ProductImage');
+            $ProductImage = Image::make($pimage)->resize(300, 200);
+            $randName=Str::random(10);
+            $extension=$pimage->getClientOriginalExtension();
+            $newName=$randName.".".$extension;
+            $ProductImage->save('Products/'.$newName);
+            $product->ProductImage='Products/'.$newName;
+        }
+        if($request->file('FrontView')){
+            $fprevious=$product->FrontView;
+            @unlink($fprevious);//delete the image 
+            $fimage=$request->file('FrontView');
+            $ProductImage = Image::make($fimage)->resize(300, 200);
+            $randName=Str::random(10);
+            $extension=$fimage->getClientOriginalExtension();
+            $fnewName=$randName.".".$extension;
+            $ProductImage->save('Products/'.$fnewName);
+            $product->FrontView='Products/'.$fnewName;
+        }
+        //update everything i the database 
+        $product->ProductName=$request->ProductName;
+        $product->ProductText=$request->ProductText;
+        $product->ProductCategory=$request->ProductCategory;
+        $product->ProductBrand=$request->ProductBrand;
+        $product->SellingPrice=$request->SellingPrice;
+        $product->Description=$request->ProductDescription;
+        $product->ProductCount=$request->ProductCount;
+        $product->save();
+        Session::flash('success','Product Successfully Updated');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -134,6 +178,15 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product=Product::find($id);
+        // dd($product);
+        if($product){
+            //delete the photos also
+            @unlink($product->ProductImage);
+            @unlink($product->FrontView);
+            $product->delete();
+            Session::flash('danger','Success,Product Successfully Deleted');
+            return back();
+        }
     }
 }

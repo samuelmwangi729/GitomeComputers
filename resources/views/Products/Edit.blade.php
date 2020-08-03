@@ -17,8 +17,9 @@
         <div class="x_title">
             <h4>View Products Available</h4>
         </div>
-       <form method="post" action="{{ route('products.store') }}" enctype="multipart/form-data">
+       <form method="post" action="{{ route('products.update',[$product->id]) }}" enctype="multipart/form-data">
         @csrf
+        @method('PATCH')
            <div class="col-sm-6">
                <div class="form-group @error('ProductName') bad @enderror">
                    <label class="label-control" for="ProductName">
@@ -158,7 +159,7 @@
             </div>
         </div>
         <div class="col-sm-12">
-            <button class="btn fa fa-send btn-md btn-success" type="submit">Add Product</button>
+            <button class="btn fa fa-send btn-md btn-success" type="submit">Update Product</button>
         </div>
        </form>
     </div>
