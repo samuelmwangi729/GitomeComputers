@@ -36,10 +36,33 @@
                     <!--Start COntact-->
                     <li><a><i class="fa fa-map-marker"></i> Contacts <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
-                        <li><a href="{{ route('contacts.index') }}">Add Service</a></li>
+                        <li><a href="{{ route('contacts.index') }}">Add Contacts</a></li>
                       </ul>
                     </li>
                     <!--end COntact-->
+                    <!--Start Quotes-->
+                    <li><a><i class="fa fa-question"></i> Quotes <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><a href="{{ route('quotes.index') }}">View Quotes</a></li>
+                      </ul>
+                    </li>
+                    <!--End Quote-->
+                    {{-- Start Products Categories --}}
+                    <li><a><i class="fa fa-sitemap"></i> Product Categories <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><a href="{{ route('categories.index') }}">Add Categories</a></li>
+                      </ul>
+                    </li>
+                    {{-- Stop Product Categories --}}
+                    {{-- Start Products Sidebar --}}
+                    <li><a><i class="fa fa-qrcode"></i> Products <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><a href="{{ route('brands.index') }}">Products Brands</a></li>
+                        <li><a href="{{ route('products.index') }}">View Products</a></li>
+                        <li><a href="{{ route('products.create') }}">Add Products</a></li>
+                      </ul>
+                    </li>
+                    {{-- End products menu --}}
                     <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
                         <li><a href="form.html">General Form</a></li>

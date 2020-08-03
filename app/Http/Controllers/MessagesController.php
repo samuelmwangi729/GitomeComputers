@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Message;
+use App\{Message,Quote};
 use App\User;
 use Str;
 use Auth;
