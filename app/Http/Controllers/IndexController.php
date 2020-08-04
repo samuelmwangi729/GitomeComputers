@@ -107,7 +107,7 @@ class IndexController extends Controller
     }
     protected function shop(){
         //load the sliders
-        $sliders=Slider::all();
+        $sliders=Slider::all()->skip(1);
         $active=Slider::find(1);
         //load products brands
         $brands=Brand::all();
