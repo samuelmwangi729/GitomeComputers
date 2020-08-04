@@ -63,6 +63,16 @@
                       </ul>
                     </li>
                     {{-- End products menu --}}
+                    {{-- Start SHop Sidebar --}}
+                    <li><a><i class="fa fa-hourglass"></i> Shop <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><a href="{{ route('shops.create') }}">View Shop Slider</a></li>
+                        <li><a href="{{ route('shops.index') }}">Create Slider</a></li>
+                        <li><a href="{{ route('products.index') }}"></a></li>
+                        <li><a href="{{ route('products.create') }}">Add Products</a></li>
+                      </ul>
+                    </li>
+                    {{-- End Shop Menu --}}
                     <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
                         <li><a href="form.html">General Form</a></li>

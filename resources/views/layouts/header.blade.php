@@ -48,9 +48,9 @@
         <div class="row">
           <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <!-- logo start -->
-            <div class="logo" style="font-size:20px;color:red;font-weight:bold"> 
-                {{ config('app.name') }}
-                {{-- <a href="it_home.html"><img src="images/logos/it_logo.png" alt="logo" /></a> --}}
+            <div class="logo" style="font-weight:bold;text-shadow:1px 1px  red;color:black"> 
+              <img src="{{ asset('images/logos/logo.jpg') }}" alt="#" style="height:50px;width:50px;border-radius:50px !important" onclick="window.open('/','_parent')" />
+              {{ config('app.name') }}
              </div>
             <!-- logo end -->
           </div>
@@ -61,6 +61,7 @@
                 <ul class="first-ul">
                   <li> <a  href="/">Home</a>
                   </li>
+                  <li><a href="{{ route('shop') }}">Shop</a></li>
                   <li><a href="it_about.html">About Us</a></li>
                   <li> <a href="{{ route('services') }}">Service</a>
                   </li>

@@ -20,9 +20,17 @@ Route::get('/Services',[
     'uses'=>'IndexController@index',
     'as'=>'services'
 ]);
+Route::get('/Products/{slug}',[
+    'uses'=>'IndexController@show',
+    'as'=>'product.single'
+]);
 Route::get('/Contact/Us',[
     'uses'=>'IndexController@contact',
     'as'=>'contact'
+]);
+Route::get('/Shop/Home',[
+    'uses'=>'IndexController@shop',
+    'as'=>'shop'
 ]);
 Route::post('/Quote/Request',[
     'uses'=>'IndexController@store',
@@ -60,8 +68,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('categories', 'CategoriesController');
     Route::resource('products', 'ProductsController');
     Route::resource('brands', 'BrandsController');
+    Route::resource('shops', 'ShopController');
     Route::get('Product/Delete/{id}',[
         'uses'=>'ProductsController@destroy',
         'as'=>'product.destroy'
+    ]);
+    Route::get('Slider/Delete/{id}',[
+        'uses'=>'ShopController@destroy',
+        'as'=>'shops.delete'
     ]);
 });

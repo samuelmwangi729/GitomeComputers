@@ -35,21 +35,39 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
+      <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+      </style>
 </head>
-<body id="default_theme" class="it_service">
+<body id="default_theme" >
 <!-- loader -->
-<div class="bg_load"> <img class="loader_animation" src="{{ asset('images/loaders/loader_1.png') }}" alt="#" /> </div>
+<div class="bg_load"> <img class="fa-spin" src="{{ asset('images/loaders/logo.jpg') }}" alt="#" style="height:100px" /> </div>
 <!-- end loader -->
 @include('layouts.header')
-@yield('content')
+<div class="row-fluid">
+  @yield('content')
+</div>
 <!-- section -->
-<div class="section">
+<div class="section container">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="full">
           <div class="contact_us_section">
-            <div class="call_icon"> <img src="{{ asset('images/it_service/phone_icon.png"') }}" alt="#" /> </div>
+            <div class="call_icon"> <img src="{{ asset('images/logos/logo.jpg') }}" alt="#" height="70px" style="border-radius:50px" /> </div>
             <div class="inner_cont">
               <h2>REQUEST A FREE QUOTE</h2>
               <p>Get answers and advice from people you want it from.</p>

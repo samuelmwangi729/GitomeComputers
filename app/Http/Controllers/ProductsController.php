@@ -72,6 +72,7 @@ class ProductsController extends Controller
         Product::create([
             'ProductId'=>'GCG'.strtoupper(Str::random(10)),
             'ProductName'=>$request->ProductName,
+            'ProductSlug'=>str_slug($request->ProductName),
             'ProductText'=>$request->ProductText,
             'ProductCategory'=>$request->ProductCategory,
             'ProductBrand'=>$request->ProductBrand,
@@ -159,6 +160,7 @@ class ProductsController extends Controller
         }
         //update everything i the database 
         $product->ProductName=$request->ProductName;
+        $product->ProductSlug= str_slug($request->ProductName);
         $product->ProductText=$request->ProductText;
         $product->ProductCategory=$request->ProductCategory;
         $product->ProductBrand=$request->ProductBrand;

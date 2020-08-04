@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Contact;
-use App\Quote;
+use App\{Contact,Quote,Slider,Product,Category,Brand};
 use Session;
 use Illuminate\Http\Request;
 
@@ -62,9 +61,15 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $slug=request()->slug;
+        $product=Product::where('ProductSlug','=',$slug)->get()->first();
+        if($product){
+            return view('single')->with('product',$product);
+        }else{
+            return back();
+        }
     }
 
     /**
@@ -99,5 +104,23 @@ class IndexController extends Controller
     public function destroy($id)
     {
         //
+    }
+    protected function shop(){
+        //load the sliders
+        $sliders=Slider::all();
+        $active=Slider::find(1);
+        //load products brands
+        $brands=Brand::all();
+        //load the products 
+        $products=Product::all();
+        //load the products Categories
+        $categories=Category::all();
+        return view('shop')
+        ->with('products',$products)
+        ->with('active',$active)
+        ->with('sliders',$sliders)
+        ->with('brands',$brands)
+        ->with('categories',$categories)
+        ;
     }
 }
