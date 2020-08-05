@@ -104,7 +104,7 @@ class BrandsController extends Controller
         @unlink($oldImage);
         //then save the image  into the server 
         $image=$request->file('BrandImage');
-        $img = Image::make($image)->resize(300, 200);
+        $img = Image::make($image)->resize(300, 250);
         $randName=Str::random(10);
         $extension=$image->getClientOriginalExtension();
         $newName=$randName.".".$extension;

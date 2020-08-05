@@ -157,6 +157,10 @@ class CartController extends Controller
             $username=Session::get('GuestId');
         }
         $carts=Cart::where('clientId','=',$username)->get();
+        if(count($carts)==0){
+            Session::flash('error','Your Cart is Empty,');
+            return back();
+        }
         //get the cart totals
         // dd($carts);
         $sum=0;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Session;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -38,6 +39,10 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        Session::forget('total');
+        Session::forget('OrderId');
+        Session::forget('userDetails');
+        Session::forget('Cart');
         $this->middleware('guest');
     }
 

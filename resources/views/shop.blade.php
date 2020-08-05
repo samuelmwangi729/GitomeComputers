@@ -60,11 +60,6 @@
         <img src="{{ asset($brand->BrandImage) }}" height="170px">
        </a>
      </div>
-     <a href="#">
-      <div class="card-body">
-        <h3 class="text-center" style="font-weight:bold"> {{ $brand->BrandName }}</h3>
-       </div>
-     </a>
    </div>
   </div>
    @endforeach

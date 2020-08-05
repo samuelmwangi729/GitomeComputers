@@ -72,6 +72,11 @@
                         <li><a href="{{ route('products.create') }}">Add Products</a></li>
                       </ul>
                     </li>
+                 <li onclick="document.getElementById('logout-form').submit()"><a><i class="fa fa-power-off"></i> Logout <span class="fa fa-chevron-right"></span></a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                </li>
                     {{-- End Shop Menu --}}
                     <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">

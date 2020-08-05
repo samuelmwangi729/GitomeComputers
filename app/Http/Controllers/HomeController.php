@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Message,Service,Contact,Quote,Category,Product,Brand};
+use App\{Message,Service,Contact,Quote,Category,Product,Brand,Order,Cart,User};
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $users=User::count();
+        $processed=Order::where('Status','=',1)->get();
+        $processedOrders=count($processed);//processed orders
+        $cart=Cart::where('Status','=','0')->get();
+        $abadoned=count($cart);//abadoned shopping carts
+        $orders=Order::count();
         $categories=Category::count();
         $brands=Brand::count();
         $products=Product::count();
