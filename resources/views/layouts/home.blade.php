@@ -31,6 +31,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/layers.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/navigation.css') }}" />
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -217,6 +218,18 @@
 <script src="{{ asset('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+  @if(Session::has('success'))
+      toastr.success("{{ Session::get('success') }}");
+  @endif
+  @if(Session::has('error'))
+      toastr.error("{{ Session::get('error') }}");
+  @endif
+  @if(Session::has('info'))
+      toastr.info("{{ Session::get('info') }}");
+  @endif
+</script>
 <script>
   $('#summernote').summernote(
     {

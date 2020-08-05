@@ -45,9 +45,11 @@
                 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. 
                   Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.<br>
                   <span class="stock">2 in stock</span> </p>
-                <form class="form" method="post" action="#">
+                <form class="form" method="post" action="{{ route('cart.store') }}">
+                  @csrf
                   <div class="quantity">
-                    <input step="1" min="1" max="5" name="quantity" value="1" title="Qty" class="form-control" size="4" type="number" style="border-radius:30px;width:40%">
+                    <input class="form-control"  type="hidden" name="ProductId" style="border-radius:30px;width:40%" value="{{ $product->ProductId }}">
+                    <input step="1" min="1"  name="Quantity" value="1" title="Qty" class="form-control" size="4" type="number" style="border-radius:30px;width:40%">
                   </div>
                   <button type="submit" class="btn" style="background-color:gold;color:purple">Add to cart</button>
                 </form>

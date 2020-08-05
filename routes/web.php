@@ -32,17 +32,23 @@ Route::get('/Shop/Home',[
     'uses'=>'IndexController@shop',
     'as'=>'shop'
 ]);
+Route::get('/CheckOut',[
+    'uses'=>'CartController@checkout',
+    'as'=>'checkout'
+]);
 Route::post('/Quote/Request',[
     'uses'=>'IndexController@store',
     'as'=>'quotes'
 ]);
 Auth::routes();
-
+Route::resource('orders','OrdersController');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('cart','CartController');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/User/Roles',[
         'uses'=>'UsersController@roles',

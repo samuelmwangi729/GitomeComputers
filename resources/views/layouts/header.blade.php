@@ -66,6 +66,7 @@
                   <li> <a href="{{ route('services') }}">Service</a>
                   </li>
                   <li><a href="{{ route('contact') }}">Contact</a></li>
+                  <li><a href="{{ route('cart.index') }}">Cart<sup><div class="badge badge-danger">{{ count(App\Cart::where('clientId','=',Session::get('GuestId'))->get()) }}</div></sup></a></li>
                 </ul>
               </div>
             </div>
