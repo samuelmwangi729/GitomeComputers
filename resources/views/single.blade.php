@@ -82,19 +82,12 @@
             <div class="side_bar_blog">             
             <div class="side_bar_blog">
             <div class="side_bar_blog">
-              <h4>OUR SERVICES</h4>
+              <h4 style="border-top:4px solid red;border-bottom:4px solid red" class="text-center">OUR SERVICES</h4>
               <div class="categary">
                 <ul>
-                    <li><a href="it_data_recovery.html"><i class="fa fa-angle-right"></i> Data recovery</a></li>
-                    <li><a href="it_computer_repair.html"><i class="fa fa-angle-right"></i> Computer repair</a></li>
-                    <li><a href="it_mobile_service.html"><i class="fa fa-angle-right"></i> Mobile service</a></li>
-                    <li><a href="it_network_solution.html"><i class="fa fa-angle-right"></i> Network solutions</a></li>
-                    <li><a href="it_techn_support.html"><i class="fa fa-angle-right"></i> Technical support</a></li>
-                    <li><a href="it_data_recovery.html"><i class="fa fa-angle-right"></i> Data recovery</a></li>
-                    <li><a href="it_computer_repair.html"><i class="fa fa-angle-right"></i> Computer repair</a></li>
-                    <li><a href="it_mobile_service.html"><i class="fa fa-angle-right"></i> Mobile service</a></li>
-                    <li><a href="it_network_solution.html"><i class="fa fa-angle-right"></i> Network solutions</a></li>
-                    <li><a href="it_techn_support.html"><i class="fa fa-angle-right"></i> Technical support</a></li>
+                    @foreach ($services as $item)
+                    <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>{{ $item->Service }}</a></li>
+                    @endforeach
                 </ul>
               </div>
             </div>

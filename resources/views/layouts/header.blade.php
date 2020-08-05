@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="float-right">
-              <div class="make_appo"> <a class="btn white_btn" href="make_appointment.html">Make Appointment</a> </div>
+              <div class="make_appo"> <a class="btn white_btn" href="{{ route('appointments.index') }}"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Book Appointment</a> </div>
             </div>
           </div>
         </div>
@@ -66,7 +66,10 @@
                   <li> <a href="{{ route('services') }}">Service</a>
                   </li>
                   <li><a href="{{ route('contact') }}">Contact</a></li>
-                  <li><a href="{{ route('cart.index') }}">Cart<sup><div class="badge badge-danger">{{ count(App\Cart::where('clientId','=',Session::get('GuestId'))->get()) }}</div></sup></a></li>
+                  <li><a href="{{ route('cart.index') }}">Cart<sup><div class="badge badge-danger">{{ count(App\Cart::where([
+                    ['clientId','=',Session::get('GuestId')],
+                    ['Status','=',0]
+                  ])->get()) }}</div></sup></a></li>
                 </ul>
               </div>
             </div>

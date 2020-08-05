@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
-use App\{Brand,Category,Product};
+use App\{Brand,Category,Product,Service};
 use Session;
 use Str;
 class ProductsController extends Controller
@@ -94,8 +94,11 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
+        $services=Service::all();
         $product=Product::find($id);
-        return view('Products.Single')->with('product',$product);
+        return view('Products.Single')
+        ->with('services',$services)
+        ->with('product',$product);
     }
 
     /**

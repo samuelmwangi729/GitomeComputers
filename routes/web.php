@@ -48,6 +48,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('cart','CartController');
+Route::resource('appointments','AppointmentsController');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/User/Roles',[
@@ -82,5 +83,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('Slider/Delete/{id}',[
         'uses'=>'ShopController@destroy',
         'as'=>'shops.delete'
+    ]);
+    Route::get('/Appointments',[
+        'uses'=>'AppointmentsController@all',
+        'as'=>'appointments.all'
     ]);
 });

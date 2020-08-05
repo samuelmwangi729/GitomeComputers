@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\Slider;
 use Session;
+use App\Service;
 use Str;
 class ShopController extends Controller
 {
@@ -75,7 +76,10 @@ class ShopController extends Controller
     public function show($id)
     {
         $slider=Slider::find($id);
-        return view('Shop.Single')->with('slider',$slider);
+        $services=Service::all();
+        return view('Shop.Single')
+        ->with('services',$services)
+        ->with('slider',$slider);
     }
 
     /**

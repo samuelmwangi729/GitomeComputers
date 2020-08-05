@@ -7,8 +7,9 @@
         </div>
         <span>Name: {{ $quote->Names }}</span><br>
         <span>Email: {{ $quote->Email }}</span><br>
-        <span>Email: {{ $quote->Phone }}</span><br>
-        <span>Name: {{ $quote->Message }}</span><br><br>
+        <span>Phone: {{ $quote->Phone }}</span><br>
+        <span>Message: {{ $quote->Message }}</span><br>
+        <span>Sent On: {{ ($quote->created_at)->toFormattedDateString() }}</span><br><br>
         <button class="btn fa fa-backward btn-primary" onclick="window.open('/quotes','_parent')">Back</button>
     </div>
 </div>

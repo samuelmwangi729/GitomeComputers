@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Message,Service,Contact,Quote,Category,Product,Brand,Order,Cart,User};
+use App\{Message,Service,Contact,Quote,Category,Product,Brand,Order,Cart,User,Appointment};
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $appointments=Appointment::count();
         $users=User::count();
         $processed=Order::where('Status','=',1)->get();
         $processedOrders=count($processed);//processed orders
@@ -37,6 +38,11 @@ class HomeController extends Controller
         $contacts=Contact::count();
         $quotes=Quote::count();
         return view('home')
+        ->with('appointments',$appointments)
+        ->with('processedOrders',$processedOrders)
+        ->with('users',$users)
+        ->with('abadoned',$abadoned)
+        ->with('orders',$orders)
         ->with('brands',$brands)
         ->with('products',$products)
         ->with('categories',$categories)

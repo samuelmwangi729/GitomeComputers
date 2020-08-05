@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\{Contact,Quote,Slider,Product,Category,Brand};
 use Session;
+use App\Service;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -64,9 +65,12 @@ class IndexController extends Controller
     public function show(Request $request)
     {
         $slug=request()->slug;
+        $services=Service::all();
         $product=Product::where('ProductSlug','=',$slug)->get()->first();
         if($product){
-            return view('single')->with('product',$product);
+            return view('single')
+            ->with('services',$services)
+            ->with('product',$product);
         }else{
             return back();
         }
