@@ -10,11 +10,11 @@
                 <ul class="list-inline">
                   @foreach (App\Contact::all() as $contact )
                       @if( $contact->Type=='Building')
-                      <li> <span class="topbar-label"></span> <span class="topbar-hightlight"><i class="fa fa-map-marker"></i>{{ $contact->Address }}</span> </li>
+                      <li> <span class="topbar-label"></span> <span class="topbar-hightlight" style="color:black;font-weight:bold"><i class="fa fa-map-marker"></i>{{ $contact->Address }}</span> </li>
                       @elseif( $contact->Type=='Mobile')
-                      <li> <span class="topbar-label"><i class="fa fa-phone"></i></span> <span class="topbar-hightlight"><a href="mailto:ggtomeh@gmail.com">{{ $contact->Address }}</a></span> </li>
+                      <li> <span class="topbar-label"><i class="fa fa-phone"></i></span> <span class="topbar-hightlight" style="color:black;font-weight:bold">{{ $contact->Address }}</span> </li>
                       @else
-                      <li> <span class="topbar-label"><i class="fa fa-envelope-o"></i></span> <span class="topbar-hightlight"><a href="mailto:ggtomeh@gmail.com">{{ $contact->Address }}</a></span> </li>
+                      <li> <span class="topbar-label"><i class="fa fa-envelope-o"></i></span> <span class="topbar-hightlight"><a href="mailto:{{ $contact->Address }}" style="color:black;font-weight:bold">{{ $contact->Address }}</a></span> </li>
                       @endif
                   @endforeach
                 </ul>
@@ -25,17 +25,28 @@
             <div class="float-left">
               <div class="social_icon">
                 <ul class="list-inline">
-                  <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook" target="_blank"></a></li>
-                  <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+" target="_blank"></a></li>
-                  <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter" target="_blank"></a></li>
-                  <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn" target="_blank"></a></li>
-                  <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram" target="_blank"></a></li>
-                  <li><a class="fa fa-whatsapp" style="color:greem" href="https://wa.me/0715366415" title="Instagram" target="_blank"></a></li>
+              @foreach ( App\Platform::all() as $platform)
+                    @if($platform->Platform=='Facebook')
+                    <li><a class="fa fa-facebook" href="{{ $platform->link }}" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    @elseif($platform->Platform=='Whatsapp')
+                    <li><a class="fa fa-whatsapp"  href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    @elseif($platform->Platform=='GooglePlus')
+                    <li><a class="fa fa-google-plus" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    @elseif($platform->Platform=='Instagram')
+                    <li><a class="fa fa-instagram" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    @elseif($platform->Platform=='Pinterest')
+                    <li><a class="fa fa-pinterest" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    @elseif($platform->Platform=='Linkedin')
+                    <li><a class="fa fa-linkedin" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    @else
+                    <li><a class="fa fa-twitter" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    @endif
+              @endforeach
                 </ul>
               </div>
             </div>
             <div class="float-right">
-              <div class="make_appo"> <a class="btn white_btn" href="{{ route('appointments.index') }}"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Book Appointment</a> </div>
+              <div class="make_appo"> <a class="btn white_btn" href="{{ route('appointments.index') }}" style="font-size:11px;font-weight:bold">Book  Appointment</a> </div>
             </div>
           </div>
         </div>

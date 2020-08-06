@@ -54,7 +54,7 @@
         /* heading */
       </style>
 </head>
-<body id="default_theme" >
+<body id="default_theme">
 <!-- loader -->
 <div class="bg_load"> <img class="fa-spin" src="{{ asset('images/loaders/logo.jpg') }}" alt="#" style="height:100px" /> </div>
 <!-- end loader -->
@@ -69,12 +69,12 @@
       <div class="col-md-12">
         <div class="full">
           <div class="contact_us_section">
-            <div class="call_icon"> <img src="{{ asset('images/logos/logo.jpg') }}" alt="#" height="70px" style="border-radius:50px" /> </div>
+            <div class="call_icon"> <img src="{{ asset('images/logos/logo.jpg') }}" alt="#" width="70px" style="border-radius:50px" /> </div>
             <div class="inner_cont">
               <h2>REQUEST A FREE QUOTE</h2>
               <p>Get answers and advice from people you want it from.</p>
             </div>
-            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="{{ route('contact') }}">Contact us</a> </div>
+            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="{{ route('contact') }}">Request Here</a> </div>
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@
 <footer class="footer_style_2">
   <div class="container">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-4 text-center">
         <div class="main-heading left_text">
           <h2>{{ config('app.name') }}</h2>
         </div>
@@ -141,61 +141,74 @@
           wrong with the device  and offer the highest-quality, 
           quick and affordable repair work to get your device  up and running.
         </p>
-        <ul class="social_icons">
-          <li class="social-icon fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-          <li class="social-icon tw"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-          <li class="social-icon gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-        </ul>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 text-center">
         <div class="main-heading center_text">
           <h2>Services We Offer</h2>
         </div>
        <div class="row">
          <div class="col-sm-6">
           <ul class="footer-menu">
-            <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i> Data recovery</a></li>
-            <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i> Computer repair</a></li>
-            <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i> Mobile service</a></li>
-            <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i> Network solutions</a></li>
-            <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i> Technical support</a></li>
+          @foreach( App\Service::all()->take(5) as $first)
+          <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i> {{ $first->Service }}</a></li>
+          @endforeach
           </ul>
          </div>
          <div class="col-sm-6">
           <ul class="footer-menu">
-            <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i>OS Installation</a></li>
-            <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i> Password Reset</a></li>
-            <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i> Software Development</a></li>
-            <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i> Web design</a></li>
-            <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i>Onsite Services</a></li>
+            @foreach( App\Service::orderBy('id','desc')->get()->take(5) as $first)
+          <li><a href="{{ route('services') }}"><i class="fa fa-angle-right"></i> {{ $first->Service }}</a></li>
+          @endforeach
           </ul>
          </div>
        </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 text-center">
         <div class="main-heading left_text">
           <h2>Contact us</h2>
         </div>
-        <p><i class="fa fa-map-marker"></i>&nbsp;Goshen HSE, 1<sup>st</sup> Floor Rm 2,<br>
-          Ol Kalou Nyandarua County<br>
-          <span style="font-size:18px;"><i class="fa fa-phone"></i>&nbsp;<a href="tel:+9876543210">+987 654 3210</a></span></p>
-        <div class="footer_mail-section">
-          <form>
-            <fieldset>
-            <div class="field">
-              <input placeholder="Email" type="text">
-              <button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
-            </div>
-            </fieldset>
-          </form>
-        </div>
+        <ul class="list-inline">
+          @foreach (App\Contact::all() as $contact )
+              @if( $contact->Type=='Building')
+              <li> <span class="topbar-label"></span> <span class="topbar-hightlight"><i class="fa fa-map-marker"></i>&nbsp;{{ $contact->Address }}</span> </li>
+              @elseif( $contact->Type=='Mobile')
+              <li> <span class="topbar-label"><i class="fa fa-phone"></i></span> <span class="topbar-hightlight">&nbsp;{{ $contact->Address }}</span> </li>
+              @else
+              <li> <span class="topbar-label"><i class="fa fa-envelope-o"></i></span> <span class="topbar-hightlight"><a href="mailto:{{ $contact->Address }}" style="text-decoration:none !important"> &nbsp;{{ $contact->Address }}</a></span> </li>
+              @endif
+          @endforeach
+        </ul>
       </div>
     </div>
-    <div class="cprt">
-      <p>{{ config('app.name') }} © Copyrights <?php echo date('Y');?> Design by <a href="mailto:samuelmwangi729@gmail.com" style="color:white;text-style:none !mportant">Samuel Mwangi</a></p>
-    </div>
+  </div>
+  <br><br>
+  &HorizontalLine;
+  <div class="text-center">
+    @foreach ( App\Platform::all() as $platform)&VerticalLine;
+            @if($platform->Platform=='Facebook')
+            <a class="fa fa-facebook" href="{{ $platform->link }}" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp; &VerticalLine;
+            @elseif($platform->Platform=='Whatsapp')
+            <a class="fa fa-whatsapp"  href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            @elseif($platform->Platform=='GooglePlus')
+            <a class="fa fa-google-plus" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            @elseif($platform->Platform=='Instagram')
+            <a class="fa fa-instagram" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            @elseif($platform->Platform=='Pinterest')
+            <a class="fa fa-pinterest" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            @elseif($platform->Platform=='Linkedin')
+            <a class="fa fa-linkedin" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            @else
+            <a class="fa fa-twitter" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            @endif
+      @endforeach
+  </div>
+  <div class="container text-center text-white">
+   <p>
+     &copy; <?php echo date('Y');?> &VerticalLine;{{ config('app.name') }} | All Rights Reserved
+   </p>
   </div>
 </footer>
+
 <!-- end footer -->
 <!-- js section -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>

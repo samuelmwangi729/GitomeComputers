@@ -6,7 +6,7 @@
     <div class="row">
       <div id="rev_slider_4_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="classicslider1" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
         <!-- START REVOLUTION SLIDER 5.0.7 auto mode -->
-        <div id="rev_slider_4_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.0.7">
+        <div id="rev_slider_4_1" class="rev_slider fullwidthabanner" style="display:none;">
           @include('layouts.slider')
           <div class="tp-static-layers"></div>
         </div>
@@ -77,7 +77,7 @@
       <div class="col-md-12">
         <div class="full">
           <div class="main_heading text_align_left">
-            <h2>How we Do It</h2>
+            <h2 style="color:black !important">How we Do It</h2>
             <p class="large">With Our Accurate and Precise Instruments, We  repair  Devices Fast</p>
           </div>
         </div>
@@ -91,7 +91,7 @@
               <div class="service_blog_inner">
                 <div class="icon text_align_left"><img src="images/it_service/si1.png" alt="#" /></div>
                 <h4 class="service-heading">Fast service</h4>
-                <p>
+                <p style="color:black">
                   We will get your device up and running within 24 hrs
                 </p>
               </div>
@@ -102,7 +102,9 @@
               <div class="service_blog_inner">
                 <div class="icon text_align_left"><img src="images/it_service/si2.png" alt="#" /></div>
                 <h4 class="service-heading">Secure payments</h4>
-                <p>Pay for the services you get. We guarantee Success.</p>
+                <p style="color:black">
+                  Pay for the services you get. We guarantee Success.
+                </p>
               </div>
             </div>
           </div>
@@ -111,7 +113,9 @@
               <div class="service_blog_inner">
                 <div class="icon text_align_left"><img src="images/it_service/si3.png" alt="#" /></div>
                 <h4 class="service-heading">Expert team</h4>
-                <p>This makes our clients sure <br>that we can fix it</p>
+                <p style="color:black">
+                  This makes our clients sure <br>that we can fix it
+                </p>
               </div>
             </div>
           </div>
@@ -120,7 +124,9 @@
               <div class="service_blog_inner">
                 <div class="icon text_align_left"><img src="images/it_service/si4.png" alt="#" /></div>
                 <h4 class="service-heading">Affordable services</h4>
-                <p>Our Services are affordable to each and everyone desiring to let us work for them.</p>
+                <p style="color:black">
+                  Our Services are affordable to each and everyone desiring to let us work for them.
+                </p>
               </div>
             </div>
           </div>
@@ -129,7 +135,9 @@
               <div class="service_blog_inner">
                 <div class="icon text_align_left"><img src="images/it_service/si5.png" alt="#" /></div>
                 <h4 class="service-heading">30 Days warranty</h4>
-                <p>We offer a 7 days warrant period for the devices we repair and 30 days warrant  for the goods sold.</p>
+                <p style="color:black">
+                  We offer a 7 days warrant period for the devices we repair and 30 days warrant  for the goods sold.
+                </p>
               </div>
             </div>
           </div>
@@ -138,7 +146,9 @@
               <div class="service_blog_inner">
                 <div class="icon text_align_center"><i class="fa fa-trophy" style="color:#16a4e6;font-size:70px"></i></div>
                 <h4 class="service-heading">Award winning</h4>
-                <p>The Talk Of Town!!! We are the best of our Kind in within Our location. Come to Us today!.</p>
+                <p style="color:black">
+                  The Talk Of Town!!! We are the best of our Kind in within Our location. Come to Us today!.
+                </p>
               </div>
             </div>
           </div>
@@ -155,7 +165,7 @@
       <div class="col-md-12">
         <div class="full">
           <div class="main_heading text_align_right">
-            <h2>Our Feedback</h2>
+            <h2 style="color:black">Our Feedback</h2>
             <p class="large">Easy and effective way to get your device repaired.</p>
           </div>
         </div>

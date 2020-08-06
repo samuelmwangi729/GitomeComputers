@@ -50,7 +50,7 @@ class ShopController extends Controller
         $this->validate($request,$rules);
         //first get the image and resize it 
         $image=$request->file('SliderImage');
-        $ProductImage = Image::make($image)->resize(1000, 400);
+        $ProductImage = Image::make($image)->resize(1280, 720);
         $randName=Str::random(10);
         $extension=$image->getClientOriginalExtension();
         $newName=$randName.".".$extension;
@@ -116,7 +116,7 @@ class ShopController extends Controller
             //Delete the previous image file and save ths one
             @unlink($slider->Image);//image deleted 
             $image=$request->file('SliderImage');
-            $ProductImage = Image::make($image)->resize(1000, 400);
+            $ProductImage = Image::make($image)->resize(1280, 720);
             $randName=Str::random(10);
             $extension=$image->getClientOriginalExtension();
             $newName=$randName.".".$extension;
