@@ -74,7 +74,8 @@ class CartController extends Controller
         //check if the products exists in the cart
         $productCount=Cart::where([
             ['clientId','=',$username],
-            ['ProductId','=',$request->ProductId]
+            ['ProductId','=',$request->ProductId],
+            ['Status','=',0]
         ])->get()->count();
         if($productCount>=1){
             Session::flash('error','Product Already Added in the Cart');

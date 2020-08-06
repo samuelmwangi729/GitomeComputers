@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use Str;
-use App\{Cart,Order};
+use App\{Cart,Order,Service};
 class OrdersController extends Controller
 {
     /**
@@ -121,7 +121,23 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        $order=Order::findOrFail($id);
+        if($order){
+            //find the shopping cart
+            $carts=Cart::where([
+                ['clientId','=',$order->Email],
+                ['Status','=',1]
+            ])->get();
+            //get the cart totals 
+            $sum=0;
+            for($i=0;$i<count($carts);$i++){
+                $sum=$sum+$carts[$i]->Total;
+            }
+            return view('Orders.View')
+            ->with('total',$sum)
+            ->with('order',$order)
+            ->with('carts',$carts);
+        }
     }
 
     /**
@@ -132,7 +148,13 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order=Order::findOrFail($id);
+        if($order){
+            $order->Status=1;
+            $order->save();
+            Session::flash('success','Order Successfully Processed');
+            return back();
+        }
     }
 
     /**
@@ -155,6 +177,38 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order=Order::findOrFail($id);
+        if($order){
+            $order->delete();
+            Session::flash('error','Order Successfully Deleted');
+            return back();
+        }
+    }
+    protected function track(){
+        return view('Orders.Track')->with('services',Service::all());
+    }
+    protected function check(Request $request){
+        $rule=[
+            'OrderId'=>'required'
+        ];
+        $this->validate($request,$rule);
+        $orderId=$request->OrderId;
+        $order=Order::where('OrderId','=',$orderId)->get()->last();
+        if(is_null($order)){
+            //means the order is not found thus we try the email address
+        $order=Order::where('Email','=',$orderId)->get()->last();
+        if(is_null($order)){
+            Session::flash('error','Order Not Found. Kindly Contact Us');
+            return back();
+        }
+        Session::flash('order',$order);
+        return back();
+        }
+        Session::flash('order',$order);
+        return back();
+    }
+    protected function all(){
+        $orders=Order::all();
+        return view('Orders.Index')->with('orders',$orders);
     }
 }

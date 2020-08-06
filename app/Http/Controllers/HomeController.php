@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
-use App\{Message,Service,Contact,Quote,Category,Product,Brand,Order,Cart,User,Appointment};
+use App\{Message,Service,Contact,Quote,Category,Product,Brand,Order,Cart,User,Appointment,Platform};
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,21 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->role=='Buyer'){
+            //orders available
+            $order=Order::where('Email','=',Auth::user()->email)->get()->last();
+            $carts=Cart::where('clientId','=',Auth::user()->email)->get();
+            $sum=0;
+            for($i=0;$i<count($carts);$i++){
+                $sum=$sum+$carts[$i]->Total;
+            }
+            return view('Buyer')
+            ->with('total',$sum)
+            ->with('order',$order)
+            ->with('carts',$carts)
+            ;
+        }
+        $icons=Platform::count();
         $appointments=Appointment::count();
         $users=User::count();
         $processed=Order::where('Status','=',1)->get();
@@ -49,6 +64,7 @@ class HomeController extends Controller
         ->with('quotes',$quotes)
         ->with('contacts',$contacts)
         ->with('messages',$messages)
-        ->with('services',$services);
+        ->with('services',$services)
+        ->with('icons',$icons);
     }
 }

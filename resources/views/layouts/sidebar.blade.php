@@ -6,8 +6,9 @@
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
                         <li><a href="{{ route('home') }}">Dashboard</a></li>
-                        <li><a href="#">Users</a></li>
-                        <li><a href="index3.html">Products</a></li>
+                        @if(Auth::user()=='Administrator')
+                        <li><a href="{{ route('users.index') }}">Users</a></li>
+                        <li><a href="{{ route('products.index') }}">Products</a></li>
                       </ul>
                     </li>
                     <!--Start Messages-->
@@ -72,22 +73,13 @@
                         <li><a href="{{ route('products.create') }}">Add Products</a></li>
                       </ul>
                     </li>
+                    @endif
                  <li onclick="document.getElementById('logout-form').submit()"><a><i class="fa fa-power-off"></i> Logout <span class="fa fa-chevron-right"></span></a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
                 </li>
                     {{-- End Shop Menu --}}
-                    <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
-                      <ul class="nav child_menu">
-                        <li><a href="form.html">General Form</a></li>
-                        <li><a href="form_advanced.html">Advanced Components</a></li>
-                        <li><a href="form_validation.html">Form Validation</a></li>
-                        <li><a href="form_wizards.html">Form Wizard</a></li>
-                        <li><a href="form_upload.html">Form Upload</a></li>
-                        <li><a href="form_buttons.html">Form Buttons</a></li>
-                      </ul>
-                    </li>
                   </ul>
                 </div>  
               </div>

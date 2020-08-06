@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Service;
 use Session;
+use Str;
+use Intervention\Image\ImageManagerStatic as Image;
 class ServicesController extends Controller
 {
     /**
@@ -37,11 +39,20 @@ class ServicesController extends Controller
     public function store(Request $request)
     {
         $rule=[
-            'Service'=>'required|unique:services'
+            'Service'=>'required|unique:services',
+            'ServiceImage'=>'required'
         ];
         $this->validate($request,$rule);
+        //intervention library to resize the image uploaded
+        $image=$request->file('ServiceImage');
+        $img = Image::make($image)->resize(300, 200);
+        $randName=Str::random(10);
+        $extension=$image->getClientOriginalExtension();
+        $newName=$randName.".".$extension;
+        $img->save('Services/'.$newName);
         Service::create([
-            'Service'=>$request->Service
+            'Service'=>$request->Service,
+            'ServiceImage'=>'Services/'.$newName
         ]);
         Session::flash('success','Service Successfully Added');
         return back();
@@ -84,6 +95,18 @@ class ServicesController extends Controller
         ];
         $this->validate($request,$rule);
         $service=Service::find($id);
+        if($request->file('ServiceImage')){
+            //delete the previous image 
+            @unlink($service->ServiceImage);
+            //intervention library to resize the image uploaded
+            $image=$request->file('ServiceImage');
+            $img = Image::make($image)->resize(300, 200);
+            $randName=Str::random(10);
+            $extension=$image->getClientOriginalExtension();
+            $newName=$randName.".".$extension;
+            $img->save('Services/'.$newName);
+            $service->ServiceImage='Services/'.$newName;
+        }
         if($service){
             //update the details
             $service->Service=$request->Service;

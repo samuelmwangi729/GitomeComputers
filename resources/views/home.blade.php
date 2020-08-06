@@ -36,7 +36,7 @@
               <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-user"></i> Orders</span>
                 <div class="count">{{ $orders }}</div>
-                <span class="count_bottom"><a href="{{ route('orders.index') }}"><i class="green"><i class="fa fa-eye"></i></i>View</a></span>
+                <span class="count_bottom"><a href="{{ route('orders.all') }}"><i class="green"><i class="fa fa-eye"></i></i>View</a></span>
               </div>
               <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-user"></i> Processed Orders</span>
@@ -55,13 +55,8 @@
               </div>
               <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-user"></i> Social Icons</span>
-                <div class="count">7,325</div>
+                <div class="count">{{ $icons }}</div>
                 <span class="count_bottom"><a href="{{ route('platforms.index') }}"><i class="green"><i class="fa fa-eye"></i></i>View</a></span>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Payments</span>
-                <div class="count">7,325</div>
-                <span class="count_bottom"><a href="#"><i class="green"><i class="fa fa-eye"></i></i>View</a></span>
               </div>
           </div>
           <!-- /top tiles -->

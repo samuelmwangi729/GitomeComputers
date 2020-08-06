@@ -27,26 +27,26 @@
                 <ul class="list-inline">
               @foreach ( App\Platform::all() as $platform)
                     @if($platform->Platform=='Facebook')
-                    <li><a class="fa fa-facebook" href="{{ $platform->link }}" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    <li><a class="fa fa-facebook" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank"></a></li>
                     @elseif($platform->Platform=='Whatsapp')
-                    <li><a class="fa fa-whatsapp"  href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    <li><a class="fa fa-whatsapp"  href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank"></a></li>
                     @elseif($platform->Platform=='GooglePlus')
-                    <li><a class="fa fa-google-plus" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    <li><a class="fa fa-google-plus" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank"></a></li>
                     @elseif($platform->Platform=='Instagram')
-                    <li><a class="fa fa-instagram" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    <li><a class="fa fa-instagram" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank"></a></li>
                     @elseif($platform->Platform=='Pinterest')
-                    <li><a class="fa fa-pinterest" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    <li><a class="fa fa-pinterest" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank"></a></li>
                     @elseif($platform->Platform=='Linkedin')
-                    <li><a class="fa fa-linkedin" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    <li><a class="fa fa-linkedin" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank"></a></li>
                     @else
-                    <li><a class="fa fa-twitter" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank"></a></li>
+                    <li><a class="fa fa-twitter" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank"></a></li>
                     @endif
               @endforeach
                 </ul>
               </div>
             </div>
             <div class="float-right">
-              <div class="make_appo"> <a class="btn white_btn" href="{{ route('appointments.index') }}" style="font-size:11px;font-weight:bold">Book  Appointment</a> </div>
+              <div class="make_appo"> <a class="btn white_btn" href="{{ route('appointments.index') }}" style="font-size:11px;font-weight:bold">Appointments</a> </div>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="row">
           <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <!-- logo start -->
-            <div class="logo" style="font-weight:bold;text-shadow:1px 1px  red;color:black"> 
+            <div class="logo" style="font-weight:bold;font-size:12px;text-shadow:1px 1px  red;color:black"> 
               <img src="{{ asset('images/logos/logo.jpg') }}" alt="#" style="height:50px;width:50px;border-radius:50px !important" onclick="window.open('/','_parent')" />
               {{ config('app.name') }}
              </div>
@@ -73,7 +73,6 @@
                   <li> <a  href="/">Home</a>
                   </li>
                   <li><a href="{{ route('shop') }}">Shop</a></li>
-                  <li><a href="it_about.html">About Us</a></li>
                   <li> <a href="{{ route('services') }}">Service</a>
                   </li>
                   <li><a href="{{ route('contact') }}">Contact</a></li>
@@ -81,6 +80,7 @@
                     ['clientId','=',Session::get('GuestId')],
                     ['Status','=',0]
                   ])->get()) }}</div></sup></a></li>
+                  <li><a href="{{ route('track') }}">Tracker</a></li>
                 </ul>
               </div>
             </div>

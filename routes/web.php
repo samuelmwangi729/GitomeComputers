@@ -16,7 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/Services',[
+Route::get('track',[
+    'uses'=>'OrdersController@track',
+    'as'=>'track'
+]);
+Route::post('order/check',[
+    'uses'=>'OrdersController@check',
+    'as'=>'orders.check'
+]);
+Route::get('/Our/Services',[
     'uses'=>'IndexController@index',
     'as'=>'services'
 ]);
@@ -67,6 +75,15 @@ Route::group(['middleware' => ['auth']], function () {
         'uses'=>'UsersController@create',
         'as'=>'users.add'
     ]);
+
+    Route::get('Orders/All',[
+        'uses'=>'OrdersController@all',
+        'as'=>'orders.all'
+    ]);
+    Route::get('Orders/Delete/{id}',[
+        'uses'=>'OrdersController@destroy',
+        'as'=>'orders.delete'
+    ]);
     Route::resource('users', 'UsersController');
     Route::resource('messages','MessagesController');
     Route::resource('services', 'ServicesController');
@@ -85,12 +102,20 @@ Route::group(['middleware' => ['auth']], function () {
         'uses'=>'ShopController@destroy',
         'as'=>'shops.delete'
     ]);
-    Route::get('Platfor/Delete/{id}',[
+    Route::get('Platform/Delete/{id}',[
         'uses'=>'PlatformsController@destroy',
         'as'=>'platforms.delete'
     ]);
     Route::get('/Appointments',[
         'uses'=>'AppointmentsController@all',
         'as'=>'appointments.all'
+    ]);
+    Route::get('/profile',[
+        'uses'=>'AppointmentsController@profile',
+        'as'=>'profile'
+    ]);
+    Route::post('/profile/Update',[
+        'uses'=>'AppointmentsController@pupdate',
+        'as'=>'password.update'
     ]);
 });

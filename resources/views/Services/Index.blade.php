@@ -16,11 +16,26 @@
     <div class="row">
         <div class="col-sm-6">
           <div class="x_panel">
-              <form method="post" action="{{ route('services.store') }}">
+              <div class="x_title">
+                 <h4> Add Service</h4>
+              </div>
+              <form method="post" action="{{ route('services.store') }}" enctype="multipart/form-data">
                 @csrf
+                <div class="form-group @error('ServiceImage') bad @enderror">
+                    <label class="label-control" for="label-control">
+                        <i class="fa fa-image"></i>
+                        Service Banner
+                    </label>
+                    <input type="file" name="ServiceImage" class="form-control">
+                    @error('ServiceImage') 
+                      <span style="color:red">
+                        {{ $message }}
+                      </span>
+                      @enderror
+                </div>
                   <div class="form-group @error('Service') bad @enderror">
                       <label for="Service" class="label-control">
-                          <i class="fa fa-tags"></i>&nbsp; Service
+                          <i class="fa fa-tags"></i>&nbsp; Service Type
                       </label>
                       <input type="text" class="form-control" name="Service" placeholder="Service Name: Eg. OS Installation">
                       @error('Service') 
@@ -43,6 +58,7 @@
                 <table class="table table-condensed table-bordered table-striped">
                     <thead>
                         <tr>
+                            <th>Banner</th>
                             <th>Service</th>
                             <th>Actions</th>
                         </tr>
@@ -50,6 +66,7 @@
                     <tbody>
                         @foreach ($services as $service )
                         <tr>
+                            <td><img src="{{ $service->ServiceImage }}" width="40px"></td>
                             <td>{{ $service->Service }}</td>
                             <td><a href="{{ route('services.edit',[$service->id]) }}" class="fa fa-edit" style="font-size:18px;color:blue"></a>&nbsp;<a href="#" onclick="document.getElementById('delete').submit()" class="fa fa-trash text-danger" style="font-size:18px;color:red"></a>
                             <form method="post" action="{{ route('services.destroy',[$service->id]) }}" id="delete">

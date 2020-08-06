@@ -7,6 +7,8 @@ use App\Service;
 use Session;
 use App\Appointment;
 use Str;
+use App\User;
+use Auth;
 class AppointmentsController extends Controller
 {
     /**
@@ -102,9 +104,18 @@ class AppointmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function pupdate(Request $request)
     {
-        //
+        $rules=[
+            'password'=>'required|confirmed'
+        ];
+        $this->validate($request,$rules);
+        $user=User::where('email','=',Auth::user()->email)->get()->first();
+        $password=bcrypt($request->password);
+        $user->password=$password;
+        $user->save();
+        Session::flash('success','Password Successfullly Updated');
+        return back();
     }
 
     /**
@@ -120,5 +131,8 @@ class AppointmentsController extends Controller
     protected function all(){
         $appointments=Appointment::paginate(15);
         return view('All')->with('appointments',$appointments);
+    }
+    protected function profile(){
+        return view('Profile');
     }
 }

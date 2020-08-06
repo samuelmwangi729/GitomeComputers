@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="Samuel Mwangi ">
 <!-- site icons -->
-<link rel="icon" href="{{ asset('images/fevicon/fevicon.png') }}" type="image/gif" />
+<link rel="icon" href="{{ asset('images/loaders/logo.jpg') }}" type="image/gif" />
 <!-- bootstrap css -->
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 <!-- Site css -->
@@ -186,19 +186,19 @@
   <div class="text-center">
     @foreach ( App\Platform::all() as $platform)&VerticalLine;
             @if($platform->Platform=='Facebook')
-            <a class="fa fa-facebook" href="{{ $platform->link }}" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp; &VerticalLine;
+            <a class="fa fa-facebook" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp; &VerticalLine;
             @elseif($platform->Platform=='Whatsapp')
-            <a class="fa fa-whatsapp"  href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-whatsapp"  href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @elseif($platform->Platform=='GooglePlus')
-            <a class="fa fa-google-plus" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-google-plus" href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @elseif($platform->Platform=='Instagram')
-            <a class="fa fa-instagram" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-instagram" href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @elseif($platform->Platform=='Pinterest')
-            <a class="fa fa-pinterest" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-pinterest" href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @elseif($platform->Platform=='Linkedin')
-            <a class="fa fa-linkedin" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-linkedin" href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @else
-            <a class="fa fa-twitter" href="{{ $platform->link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-twitter" href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @endif
       @endforeach
   </div>

@@ -20,7 +20,9 @@
               <th class="column-title">Email </th>
               <th class="column-title">Role </th>
               <th class="column-title">Joined At </th>
+              @if(Auth::user()->role=='Administrator')
               <th class="column-title">Actions </th>
+              @endif
               <th class="bulk-actions" colspan="7">
                 <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
               </th>
@@ -35,11 +37,13 @@
                 <td class=" ">{{ $user->role }}</td>
                 <td class=" ">{{ ($user->created_at)->toFormattedDateString() }}</td>
                 <td>
+                  @if(Auth::user()->role=='Administrator')
                   @if($user->role=='Administrator')
                   <div class="badge" style="background-color:gold;color:purple">Administrator</div>
                   @else
                   <a href="{{ route('users.edit',[$user->id]) }}" class="fa fa-pencil text-primary" style="font-size:18px"></a>&nbsp;&nbsp;
                   <a href="{{ route('users.destroy',[$user->id]) }}" class="fa fa-trash text-danger" style="padding-left:20px;font-size:18px"></a>
+                  @endif
                   @endif
                 </td>
               </tr>                    
