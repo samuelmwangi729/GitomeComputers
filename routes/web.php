@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('categories', 'CategoriesController');
     Route::resource('products', 'ProductsController');
     Route::resource('brands', 'BrandsController');
+    Route::resource('platforms', 'PlatformsController');
     Route::resource('shops', 'ShopController');
     Route::get('Product/Delete/{id}',[
         'uses'=>'ProductsController@destroy',
@@ -83,6 +84,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('Slider/Delete/{id}',[
         'uses'=>'ShopController@destroy',
         'as'=>'shops.delete'
+    ]);
+    Route::get('Platfor/Delete/{id}',[
+        'uses'=>'PlatformsController@destroy',
+        'as'=>'platforms.delete'
     ]);
     Route::get('/Appointments',[
         'uses'=>'AppointmentsController@all',

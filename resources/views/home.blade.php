@@ -56,7 +56,7 @@
               <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-user"></i> Social Icons</span>
                 <div class="count">7,325</div>
-                <span class="count_bottom"><a href="#"><i class="green"><i class="fa fa-eye"></i></i>View</a></span>
+                <span class="count_bottom"><a href="{{ route('platforms.index') }}"><i class="green"><i class="fa fa-eye"></i></i>View</a></span>
               </div>
               <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-user"></i> Payments</span>

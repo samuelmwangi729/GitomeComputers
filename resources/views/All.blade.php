@@ -12,6 +12,7 @@
                     <th>Email</th>
                     <th>Topic</th>
                     <th>Month</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -23,12 +24,23 @@
                     <td>{{ $appointment->Topic }}</td>
                     <td>{{ $appointment->Month }}</td>
                     <td>
-                        <a href="#" class="fa fa-eye" style="color:blue"></a>
-                        <a href="#" class="fa fa-check" style="color:green"></a>
-                        <a href="#" class="fa fa-trash" style="color:red"></a>
+                        @if($appointment->Status==0)
+                        <button class="btn btn-sm btn-danger">Pending Approval</button>
+                        @else
+                        <button class="btn btn-sm btn-success">Approved</button>
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('appointments.show',[$appointment->id]) }}" class="fa fa-eye" style="color:blue"></a>
+                        <a href="{{ route('appointments.edit',[$appointment->id]) }}" class="fa fa-check" style="color:green"></a>
                     </td>
                 </tr>
                 @endforeach
+                <tr class="text-right">
+                    <td colspan="6">
+                        {{ $appointments->links() }}
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

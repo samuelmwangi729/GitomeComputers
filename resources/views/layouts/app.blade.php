@@ -17,6 +17,8 @@
     <!-- Custom Theme Style -->
     <link href="{{ asset('vendors/css/custom.min.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
   </head>
 
   <body class="nav-md">
@@ -170,6 +172,18 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('vendors/js/custom.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+  @if(Session::has('success'))
+      toastr.success("{{ Session::get('success') }}");
+  @endif
+  @if(Session::has('error'))
+      toastr.error("{{ Session::get('error') }}");
+  @endif
+  @if(Session::has('info'))
+      toastr.info("{{ Session::get('info') }}");
+  @endif
+</script>
     <script>
     $('#summernote').summernote(
       {

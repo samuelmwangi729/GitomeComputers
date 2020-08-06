@@ -75,7 +75,7 @@ class AppointmentsController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('Appointment')->with('appointment',Appointment::find($id));
     }
 
     /**
@@ -86,7 +86,13 @@ class AppointmentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $appointment=Appointment::find($id);
+        if($appointment){
+            $appointment->Status=1;
+            $appointment->save();
+            Session::flash('success','Appointment Successfully Approved');
+            return back();
+        }
     }
 
     /**
@@ -112,7 +118,7 @@ class AppointmentsController extends Controller
         //
     }
     protected function all(){
-        $appointments=Appointment::all();
+        $appointments=Appointment::paginate(15);
         return view('All')->with('appointments',$appointments);
     }
 }
