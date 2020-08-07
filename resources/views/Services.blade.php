@@ -1,43 +1,46 @@
 @extends('layouts.home')
 @section('content')
-<section class="container-fluid" style="margin-bottom:100px">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      @for($i=0;$i<count($services);$i++)
-      <li data-target="#myCarousel" data-slide-to="{{ $i }}" @if($i==0) class="active" @endif></li>
-      @endfor
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{{ asset($min->ServiceImage) }}" alt="{{ $min->Service }}">
-        <div class="container">
-          <div class="carousel-caption text-left">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+  <ol class="carousel-indicators">
+    @for($i=0;$i<count($services);$i++)
+    <li data-target="#myCarousel" data-slide-to="{{ $i }}" @if($i==0) class="active" @endif></li>
+    @endfor
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{ asset($min->ServiceImage) }}" alt="{{ $min->Service }}">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="carousel-caption">
             <h1 style="font-size:40px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">{{ $min->Service }}</h1>
           </div>
         </div>
       </div>
-      @foreach ($services as $service)
-      <div class="carousel-item">
-        <img src="{{ asset($service->ServiceImage) }}" alt="{{ $service->Service }}">
-         <div class="row">
-           <div class="col-sm-6">
-            <div class="carousel-caption">
-              <h1 style="font-size:40px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">{{ $service->Service }}</h1>
-             </div>
+    </div>
+    @foreach ($services as $service)
+    <div class="carousel-item">
+      <img src="{{ asset($service->ServiceImage) }}" alt="{{ $service->Service }}">
+       <div class="row">
+         <div class="col-sm-6">
+          <div class="carousel-caption">
+            <h1 style="font-size:40px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">{{ $service->Service }}</h1>
            </div>
          </div>
        </div>
-      @endforeach
-    </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+     </div>
+    @endforeach
   </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<section class="row-fluid" style="margin-bottom:100px">
+  
 </div>
   {{-- End Carousel --}}
   <!--start services-->

@@ -138,9 +138,8 @@ class CartController extends Controller
         $username=Session::get('GuestId');//this is the userId
         // dd($username);
         $product=Cart::where([
-            ['clientId','=',$username],
             ['id','=',$id]
-        ])->get()->first();
+        ])->get()->last();
         //if the product is found 
         if(!$product){
             Session::flash('error','Unknown Error Occurred');

@@ -11,13 +11,15 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
        <img src="{{ asset($active->Image) }}">
-        <div class="container">
-          <div class="carousel-caption text-left">
-            <h1 style="font-size:20px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">{{ $active->Headline }}</h1>
-            <p style="font-size:15px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">
-              {{ $active->Text }}
-            </p>
-            <p><a class="btn btn-lg" href="{{ url($active->Link) }}" role="button" style="background-color:gold;color:purple">{{ $active->LinkText }}</a></p>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="carousel-caption">
+              <h1 style="font-size:20px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">{{ $active->Headline }}</h1>
+              <p style="font-size:15px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">
+                {{ $active->Text }}
+              </p>
+              <p><a class="btn btn-lg" href="{{ url($active->Link) }}" role="button" style="background-color:gold;color:purple">{{ $active->LinkText }}</a></p>
+            </div>
           </div>
         </div>
       </div>

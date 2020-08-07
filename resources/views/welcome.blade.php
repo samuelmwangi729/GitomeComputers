@@ -147,7 +147,7 @@
                 <div class="icon text_align_center"><i class="fa fa-trophy" style="color:#16a4e6;font-size:70px"></i></div>
                 <h4 class="service-heading">Award winning</h4>
                 <p style="color:black">
-                  The Talk Of Town!!! We are the best of our Kind in within Our location. Come to Us today!.
+                  The Talk Of Town!!! We are <br>the best of our Kind  within<br> Our location. Come to Us today!.
                 </p>
               </div>
             </div>
