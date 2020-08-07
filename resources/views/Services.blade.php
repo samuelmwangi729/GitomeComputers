@@ -1,124 +1,112 @@
 @extends('layouts.home')
 @section('content')
 <section class="container-fluid" style="margin-bottom:100px">
-    <div id="slider-animation" class="carousel slide" data-ride="carousel"> 
-      <!-- Indicators -->
-      <!-- The slideshow -->
-      {{-- Start the Item --}}
-            <div class="carousel-item active">
-                <img src="{{ asset('images/services/laptop.jpg') }}" alt="Los Angeles">
-                    <div class="text-box">
-                                <div class="row align-items-center">     
-                                        <div class="col-md-6">
-                                        <h1 class="wow fadeInUp" data-wow-duration="4s" style="color:white !important">We Sell New &amp; Refubished Laptops</h1>
-                                        {{-- <p class="wow fadeInUp" data-wow-duration="2s" style="font-size:12px;background-color:black;opacity:.4">We deal with wide varieties from different vendors Including but not limited to HP,Apple, Dell, Toshiba ...</p> --}}
-                                        </div>
-                                </div>
-                    </div>
-            </div>     
-        {{-- End the item --}} 
-         {{-- Start the Item --}}
-         <div class="carousel-item">
-            <img src="{{ asset('images/services/networking.jpg') }}" alt="Los Angeles">
-                <div class="text-box">
-                            <div class="row align-items-center">     
-                                    <div class="col-md-6">
-                                    <h4 class="wow fadeInUp" data-wow-duration="4s" style="color:white;font-weight:bold !important">Computer Networking</h4>
-                                    <p class="wow fadeInUp" data-wow-duration="2s" style="font-size:12px;background-color:black;opacity:.4;font-weight:bold">
-                                        We Installl networks, Perform troubleshooting if in case the network is slow and also perform security assessments to ensure your network is safe from intrusion.
-                                    </p>
-                                    </div>
-                            </div>
-                </div>
-        </div>     
-    {{-- End the item --}} 
-     {{-- Start the Item --}}
-     <div class="carousel-item">
-        <img src="{{ asset('images/services/bandwith.jpg') }}" alt="Los Angeles">
-            <div class="text-box">
-                        <div class="row align-items-center">     
-                                <div class="col-md-6">
-                                <h4 class="wow fadeInUp" data-wow-duration="4s" style="color:white;background-color:black;opacity:.4;font-weight:bold !important">Networks Security</h4>
-                                <p class="wow fadeInUp" data-wow-duration="2s" style="font-size:12px;background-color:black;opacity:.4;font-weight:bold">
-                                 We assess your computer networks  for any intrusion events. We keep You Safe
-                                </p>
-                                </div>
-                        </div>
-            </div>
-    </div>     
-{{-- End the item --}} 
-  {{-- Start the Item --}}
-  <div class="carousel-item">
-    <img src="{{ asset('images/services/sw.jpg') }}" alt="Los Angeles">
-        <div class="text-box">
-                    <div class="row align-items-center">     
-                            <div class="col-md-6">
-                            <h4 class="wow fadeInUp" data-wow-duration="4s" style="color:white;background-color:black;opacity:.4;font-weight:bold !important">Software Development</h4>
-                            <p class="wow fadeInUp" data-wow-duration="2s" style="font-size:12px;background-color:black;opacity:.4;font-weight:bold">
-                             We create safe and highly secure software to help Manage any business infrastructure. 
-                            </p>
-                            </div>
-                    </div>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      @for($i=0;$i<count($services);$i++)
+      <li data-target="#myCarousel" data-slide-to="{{ $i }}" @if($i==0) class="active" @endif></li>
+      @endfor
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{ asset($min->ServiceImage) }}" alt="{{ $min->Service }}">
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1 style="font-size:40px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">{{ $min->Service }}</h1>
+          </div>
         </div>
-</div>     
-{{-- End the item --}} 
-{{-- Start the Item --}}
-<div class="carousel-item">
-    <img src="{{ asset('images/services/web.jpg') }}" alt="Los Angeles">
-        <div class="text-box">
-                    <div class="row align-items-center">     
-                            <div class="col-md-6">
-                            <h4 class="wow fadeInUp" data-wow-duration="4s" style="color:white;background-color:black;opacity:.4;font-weight:bold !important">Web Design</h4>
-                            <p class="wow fadeInUp" data-wow-duration="2s" style="font-size:12px;background-color:black;opacity:.4;font-weight:bold">
-                             Lets Take your business Online. We do web design at affordable rates
-                            </p>
-                            </div>
-                    </div>
-        </div>
-</div>     
-{{-- End the item --}} 
-{{-- Start the Item --}}
-<div class="carousel-item">
-    <img src="{{ asset('images/services/motherboard.jpg') }}" alt="Los Angeles">
-        <div class="text-box">
-                    <div class="row align-items-center">     
-                            <div class="col-md-6">
-                            <h4 class="wow fadeInUp" data-wow-duration="4s" style="color:white;background-color:black;opacity:.4;font-weight:bold !important">Computer Repair</h4>
-                            <p class="wow fadeInUp" data-wow-duration="2s" style="font-size:12px;background-color:black;opacity:.4;font-weight:bold">
-                            We replace broken screens and also revive dead motherboards
-                            </p>
-                            </div>
-                    </div>
-        </div>
-</div>     
-{{-- End the item --}} 
-{{-- Start the Item --}}
-<div class="carousel-item">
-    <img src="{{ asset('images/services/support.jpg') }}" alt="Los Angeles">
-        <div class="text-box">
-                    <div class="row align-items-center">     
-                            <div class="col-md-6">
-                            <h4 class="wow fadeInUp" data-wow-duration="4s" style="color:white;background-color:black;opacity:.4;font-weight:bold !important">Full Support</h4>
-                            <p class="wow fadeInUp" data-wow-duration="2s" style="font-size:12px;background-color:black;opacity:.4;font-weight:bold">
-                           We provide Tech Support to anyone with any difficulty in the sector
-                            </p>
-                            </div>
-                    </div>
-        </div>
-</div>     
-{{-- End the item --}} 
+      </div>
+      @foreach ($services as $service)
+      <div class="carousel-item">
+        <img src="{{ asset($service->ServiceImage) }}" alt="{{ $service->Service }}">
+         <div class="row">
+           <div class="col-sm-6">
+            <div class="carousel-caption">
+              <h1 style="font-size:40px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">{{ $service->Service }}</h1>
+             </div>
+           </div>
+         </div>
+       </div>
+      @endforeach
     </div>
-      <!-- Left and right controls -->
-      <a class="carousel-control-prev" href="#slider-animation" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#slider-animation" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
-    
-    
-    </div>
-    </section>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+  {{-- End Carousel --}}
+  <!--start services-->
+<div class="container" style="margin-bottom:50px">	
+  <div class="row mbr-justify-content-center">
+        {{-- Start Col --}}
+          <div class="col-lg-6 mbr-col-md-10">
+              <div class="wrap">
+                  <div class="ico-wrap">
+                      <span class="mbr-iconfont fa fa-clock-o"></span>
+                  </div>
+                  <div class="text-wrap vcenter">
+                      <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5" style="color:black">Fast  <span>Services</span></h2>
+                      <p class="mbr-fonts-style text1 mbr-text display-6" style="color:purple">
+                        We will get your device up and running within 24 hrs
+                      </p>
+                  </div>
+              </div>
+          </div>      
+        {{-- End Col --}}   
+         {{-- Start Col --}}
+         <div class="col-lg-6 mbr-col-md-10">
+          <div class="wrap">
+              <div class="ico-wrap">
+                  <span class="mbr-iconfont fa fa-lock"></span>
+              </div>
+              <div class="text-wrap vcenter">
+                  <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5" style="color:black">Secure  <span>Payments</span></h2>
+                  <p class="mbr-fonts-style text1 mbr-text display-6" style="color:purple">
+                   We let you Pay for What you See. Pay on delivery and Confirm the Quality of the goods
+                  </p>
+              </div>
+          </div>
+      </div>      
+    {{-- End Col --}}    
+             {{-- Start Col --}}
+             <div class="col-lg-6 mbr-col-md-10">
+              <div class="wrap">
+                  <div class="ico-wrap">
+                      <span class="mbr-iconfont fa fa-sitemap"></span>
+                  </div>
+                  <div class="text-wrap vcenter">
+                      <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5" style="color:black">Expert  <span>Team</span></h2>
+                      <p class="mbr-fonts-style text1 mbr-text display-6" style="color:purple">
+                        This makes our clients sure
+                        that we can fix your failed device
+                      </p>
+                  </div>
+              </div>
+          </div>      
+        {{-- End Col --}}    
+        {{-- Start Col --}}
+        <div class="col-lg-6 mbr-col-md-10">
+          <div class="wrap">
+              <div class="ico-wrap">
+                  <span class="mbr-iconfont fa fa-wllet"></span>
+              </div>
+              <div class="text-wrap vcenter">
+                  <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5" style="color:black">Affordable  <span>Services</span></h2>
+                  <p class="mbr-fonts-style text1 mbr-text display-6" style="color:purple">
+                    Our Services are pocket friendly to each and everyone desiring to let us work and serve them.
+                  </p>
+              </div>
+          </div>
+      </div>      
+    {{-- End Col --}}    
+  </div>
+</div>
+</section>
     
     
     

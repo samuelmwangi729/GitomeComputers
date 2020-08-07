@@ -6,7 +6,7 @@
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
                         <li><a href="{{ route('home') }}">Dashboard</a></li>
-                        @if(Auth::user()=='Administrator')
+                        @if(Auth::user()->role=='Administrator')
                         <li><a href="{{ route('users.index') }}">Users</a></li>
                         <li><a href="{{ route('products.index') }}">Products</a></li>
                       </ul>

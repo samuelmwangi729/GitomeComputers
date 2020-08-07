@@ -13,24 +13,26 @@
        <img src="{{ asset($active->Image) }}">
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1 style="font-size:70px;color:white;text-shadow:2px 2px black;font-weight:bold">{{ $active->Headline }}</h1>
-            <p style="font-size:15px;color:white;text-shadow:2px 2px black;font-weight:bold">
+            <h1 style="font-size:20px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">{{ $active->Headline }}</h1>
+            <p style="font-size:15px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">
               {{ $active->Text }}
             </p>
-            <p><a class="btn btn-lg btn-success" href="{{ url($active->Link) }}" role="button">{{ $active->LinkText }}</a></p>
+            <p><a class="btn btn-lg" href="{{ url($active->Link) }}" role="button" style="background-color:gold;color:purple">{{ $active->LinkText }}</a></p>
           </div>
         </div>
       </div>
       @foreach ($sliders as $slider)
       <div class="carousel-item">
         <img src="{{ asset($slider->Image) }}">
-         <div class="container">
-           <div class="carousel-caption text-left">
-            <h1 style="font-size:70px;color:white;text-shadow:2px 2px black;font-weight:bold">{{ $slider->Headline }}</h1>
-             <p style="font-size:15px;color:white;text-shadow:2px 2px black;font-weight:bold">
-               {{ $active->Text }}
-             </p>
-             <p><a class="btn btn-lg btn-warning" href="{{ url($slider->Link) }}" role="button">{{ $slider->LinkText }}</a></p>
+         <div class="row">
+           <div class="col-sm-6">
+            <div class="carousel-caption">
+              <h1 style="font-size:20px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">{{ $slider->Headline }}</h1>
+               <p style="font-size:15px;color:white;text-shadow:2px 2px black;font-weight:bold;background-color:black;opacity:.5">
+                 {{ $active->Text }}
+               </p>
+               <p><a class="btn btn-lg" href="{{ url($slider->Link) }}" role="button" style="background-color:gold;color:purple">{{ $slider->LinkText }}</a></p>
+             </div>
            </div>
          </div>
        </div>

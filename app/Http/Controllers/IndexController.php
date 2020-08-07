@@ -15,7 +15,11 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('Services');
+        $min=Service::orderBy('id','asc')->get()->first();
+        $services=Service::all();
+        return view('Services')
+        ->with('min',$min)
+        ->with('services',$services);
     }
 
     /**

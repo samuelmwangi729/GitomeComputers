@@ -45,7 +45,7 @@ class ServicesController extends Controller
         $this->validate($request,$rule);
         //intervention library to resize the image uploaded
         $image=$request->file('ServiceImage');
-        $img = Image::make($image)->resize(300, 200);
+        $img = Image::make($image)->resize(800, 500);
         $randName=Str::random(10);
         $extension=$image->getClientOriginalExtension();
         $newName=$randName.".".$extension;
@@ -100,7 +100,7 @@ class ServicesController extends Controller
             @unlink($service->ServiceImage);
             //intervention library to resize the image uploaded
             $image=$request->file('ServiceImage');
-            $img = Image::make($image)->resize(300, 200);
+            $img = Image::make($image)->resize(800, 500);
             $randName=Str::random(10);
             $extension=$image->getClientOriginalExtension();
             $newName=$randName.".".$extension;
