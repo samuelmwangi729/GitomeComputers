@@ -15,7 +15,7 @@
   </div>
 </div>
 <!-- end section -->
-<div class="container">
+<div class="row-fluid">
   <!-- section -->
 <div class="section padding_layout_1">
   <div class="container">
@@ -114,7 +114,7 @@
                 <div class="icon text_align_left"><img src="images/it_service/si3.png" alt="#" /></div>
                 <h4 class="service-heading">Expert team</h4>
                 <p style="color:black">
-                  This makes our clients sure <br>that we can fix it
+                  This makes our clients sure that we can fix it
                 </p>
               </div>
             </div>
@@ -159,7 +159,7 @@
 </div>
 <!-- end section -->
 <!-- section -->
-<div class="section padding_layout_1 light_silver gross_layout right_gross_layout">
+<div class="section padding_layout_1 light_silver gross_layout right_gross_layout"  style="margin-bottom:90px">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">

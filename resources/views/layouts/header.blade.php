@@ -55,37 +55,35 @@
     <!-- end header top -->
     <!-- header bottom -->
     <div class="header_bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <!-- logo start -->
-            <div class="logo" style="font-weight:bold;font-size:12px;text-shadow:1px 1px  red;color:black"> 
-              <img src="{{ asset('images/logos/logo.jpg') }}" alt="#" style="height:50px;width:50px;border-radius:50px !important" onclick="window.open('/','_parent')" />
-              {{ config('app.name') }}
-             </div>
-            <!-- logo end -->
-          </div>
-          <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <!-- menu start -->
-            <div class="menu_side">
-              <div id="navbar_menu">
-                <ul class="first-ul">
-                  <li> <a  href="/">Home</a>
-                  </li>
-                  <li><a href="{{ route('shop') }}">Shop</a></li>
-                  <li> <a href="{{ route('services') }}">Service</a>
-                  </li>
-                  <li><a href="{{ route('contact') }}">Contact</a></li>
-                  <li><a href="{{ route('cart.index') }}">Cart<sup><div class="badge badge-danger">{{ count(App\Cart::where([
-                    ['clientId','=',Session::get('GuestId')],
-                    ['Status','=',0]
-                  ])->get()) }}</div></sup></a></li>
-                  <li><a href="{{ route('track') }}">Tracker</a></li>
-                </ul>
-              </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+          <!-- logo start -->
+          <div class="logo" style="font-weight:bold;font-size:12px;text-shadow:1px 1px  red;color:black"> 
+            <img src="{{ asset('images/logos/logo.jpg') }}" alt="#" style="height:50px;width:50px;border-radius:50px !important" onclick="window.open('/','_parent')" />
+            {{ config('app.name') }}
+           </div>
+          <!-- logo end -->
+        </div>
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+          <!-- menu start -->
+          <div class="menu_side">
+            <div id="navbar_menu">
+              <ul class="first-ul">
+                <li> <a  href="/">Home</a>
+                </li>
+                <li><a href="{{ route('shop') }}">Shop</a></li>
+                <li> <a href="{{ route('services') }}">Service</a>
+                </li>
+                <li><a href="{{ route('contact') }}">Contact</a></li>
+                <li><a href="{{ route('cart.index') }}">Cart<sup><div class="badge badge-danger">{{ count(App\Cart::where([
+                  ['clientId','=',Session::get('GuestId')],
+                  ['Status','=',0]
+                ])->get()) }}</div></sup></a></li>
+                <li><a href="{{ route('track') }}">Tracker</a></li>
+              </ul>
             </div>
-            <!-- menu end -->
           </div>
+          <!-- menu end -->
         </div>
       </div>
     </div>

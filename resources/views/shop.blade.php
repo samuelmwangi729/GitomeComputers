@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('content')
-<div class="container">
+<div class="ROW">
 <div class="">
   <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-bottom:10px">
     <ol class="carousel-indicators">
@@ -90,15 +90,18 @@
          <a href="{{ route('product.single',[$product->ProductSlug]) }}" style="color:purple">
           <i class="fa fa-eye"></i>
          </a>
-         </div>
-         {{-- End Wishlist --}}
-         <div class="col-sm-4 text-center">
-          <i class="fa fa-heart"></i>
-         </div>
+         </div>        
          {{-- End View Product --}}
          <div class="col-sm-4 text-center">
-          <i class="fa fa-cart-plus"></i>
+          <i class="fa fa-cart-plus" onclick="document.getElementById('addCart').submit()"></i>
          </div>
+         <form class="form" method="post" action="{{ route('cart.store') }}" id="addCart">
+          @csrf
+          <div class="quantity">
+            <input class="form-control"  type="hidden" name="ProductId" style="border-radius:30px;width:40%" value="{{ $product->ProductId }}">
+            <input step="1" min="1"  name="Quantity" value="1" title="Qty" class="form-control" size="4" type="hidden" style="border-radius:30px;width:40%">
+          </div>
+        </form>
          {{-- End Add Cart --}}
        </div>
       </div>

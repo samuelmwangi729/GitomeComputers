@@ -9,6 +9,17 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <!-- site metas -->
 <title>{{config('app.name') }} Is a computer garage located in Nyandarua county Ol kalou town. Get your Electronics fixed at an affordable price</title>
+<meta name="google-site-verification" content="ioxwam0ZSDhT640M34n5UwGQ4JYyaxauoB7xk9vfJM8" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-173518389-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-173518389-1');
+</script>
+
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="Samuel Mwangi ">
@@ -63,19 +74,17 @@
   @yield('content')
 </div>
 <!-- section -->
-<div class="section container">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <div class="contact_us_section">
-            <div class="call_icon"> <img src="{{ asset('images/logos/logo.jpg') }}" alt="#" width="70px" style="border-radius:50px" /> </div>
-            <div class="inner_cont">
-              <h2>REQUEST A FREE QUOTE</h2>
-              <p>Get answers and advice from people you want it from.</p>
-            </div>
-            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="{{ route('contact') }}">Request Here</a> </div>
+<div class="section">
+  <div class="row-fluid">
+    <div class="col-md-12">
+      <div class="full">
+        <div class="contact_us_section">
+          <div class="call_icon"> <img src="{{ asset('images/logos/logo.jpg') }}" alt="#" width="70px" style="border-radius:50px" /> </div>
+          <div class="inner_cont">
+            <h2>REQUEST A FREE QUOTE</h2>
+            <p>Get answers and advice from people you want it from.</p>
           </div>
+          <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="{{ route('contact') }}">Request Here</a> </div>
         </div>
       </div>
     </div>
@@ -84,23 +93,21 @@
 <!-- end section -->
 <!-- section -->
 <div class="section padding_layout_1" style="padding: 50px 0;">
-  <div class="container">
-    <h4 class="text-center">Experts in Repairing :-</h4>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <ul class="brand_list">
-            <li><img src="{{ asset('images/services/hp.png') }}" style="width:40px"></li>
-            <li><img src="{{ asset('images/services/dell.svg') }}" style="width:40px"></li>
-            <li><img src="{{ asset('images/services/ibm.png') }}" style="width:100px"></li>
-            <li><img src="{{ asset('images/services/toshiba.png') }}" style="width:170px"></li>
-            <li><i class="fa fa-apple" style="font-size:40px"></i></li>
-          </ul>
-        </div>
+  <h4 class="text-center">Experts in Repairing :-</h4>
+  <div class="row-fluid">
+    <div class="col-md-12">
+      <div class="full">
+        <ul class="brand_list">
+          <li><img src="{{ asset('images/services/hp.png') }}" style="width:40px"></li>
+          <li><img src="{{ asset('images/services/dell.svg') }}" style="width:40px"></li>
+          <li><img src="{{ asset('images/services/ibm.png') }}" style="width:100px"></li>
+          <li><img src="{{ asset('images/services/toshiba.png') }}" style="width:170px"></li>
+          <li><i class="fa fa-apple" style="font-size:40px"></i></li>
+        </ul>
       </div>
     </div>
-    <h4 class="text-center">And  Many More Computing Devices. Why Not Give Us A Visit?</h4>
   </div>
+  <h4 class="text-center">And  Many More Computing Devices. Why Not Give Us A Visit?</h4>
 </div>
 <!-- end section -->
 <!-- Modal -->
@@ -188,17 +195,17 @@
             @if($platform->Platform=='Facebook')
             <a class="fa fa-facebook" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp; &VerticalLine;
             @elseif($platform->Platform=='Whatsapp')
-            <a class="fa fa-whatsapp"  href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-whatsapp"  href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @elseif($platform->Platform=='GooglePlus')
-            <a class="fa fa-google-plus" href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-google-plus" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @elseif($platform->Platform=='Instagram')
-            <a class="fa fa-instagram" href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-instagram" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @elseif($platform->Platform=='Pinterest')
-            <a class="fa fa-pinterest" href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-pinterest" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @elseif($platform->Platform=='Linkedin')
-            <a class="fa fa-linkedin" href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-linkedin" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @else
-            <a class="fa fa-twitter" href="{{ $platform->Link }}/" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
+            <a class="fa fa-twitter" href="{{ $platform->Link }}" title="{{ $platform->Platform }}" target="_blank" style="color:white !important"></a>&nbsp;&nbsp;&VerticalLine;
             @endif
       @endforeach
   </div>
